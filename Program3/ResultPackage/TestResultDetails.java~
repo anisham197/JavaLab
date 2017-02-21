@@ -1,13 +1,18 @@
 package ResultPackage;
-
 import StudentPackage.RegisterStudent;
 import java.util.*;
 
 class ResultDetails {
 
+	
 	public ArrayList<Float> grades;
 
 	RegisterStudent rs = new RegisterStudent();
+
+	public ResultDetails(){
+		rs.getInput();
+		rs.enterData();
+	}
 
 	public void enterGrade() {
 		Scanner sc = new Scanner(System.in);
@@ -15,13 +20,15 @@ class ResultDetails {
 		grades = new ArrayList<>();
 		for ( int i = 0; i < rs.sems; i++ )
 		{
-			System.out.println("Enter grades for sem " + i + 1 );
+			System.out.println("Enter grades for sem " + (i + 1) );
 			
 			try 
 			{
 				float sem_grade = sc.nextFloat();
 				if ( sem_grade > 10 )
 					throw new InvalidCGPA("SGPA exceeds 10");
+				else
+					grades.add(sem_grade);
 			}
 			catch (NumberFormatException nf)
 			{
@@ -37,32 +44,23 @@ class ResultDetails {
 
 	public void display () {
 
-		RegisterStudent rs = new RegisterStudent();
-
 		System.out.println("Name: " + rs.name);
 		System.out.println("Branch: " + rs.branch);
 
 		System.out.println("Semester\tCredits\tSGPA ");
 
 		float total = 0;
+		float cred_sum = 0;
 		for ( int i = 0; i < rs.sems; i++ )
 		{
 			System.out.println( (i+1) + "\t" + rs.credits.get(i) + "\t" + grades.get(i));
 			total = total + ( grades.get(i) * rs.credits.get(i) );
+
+			cred_sum = cred_sum + rs.credits.get(i);
 		}
 
-		System.out.println ("Final CGPA is :" + total/rs.sems );
+		System.out.println ("Final CGPA is :" + (total/cred_sum) );
 
-	}
-
-	public static void main (String args[] ) {
-		RegisterStudent rs = new RegisterStudent();
-		rs.getInput();
-		rs.enterData();
-
-		ResultDetails rd = new ResultDetails();
-		rd.enterGrade();
-		rd.display();
 	}
 	
 }
@@ -73,3 +71,20 @@ class InvalidCGPA extends Exception {
 		super(s);
 	}
 }
+
+
+public class TestResultDetails {
+	public static void main (String args[] ) {
+		
+
+		ResultDetails rd = new ResultDetails();
+		rd.enterGrade();
+		rd.display();
+	}
+}
+
+/* javac -cp . StudentPackage/RegisterStudent.java
+	javac -cp . TestResultDetails.java 
+	java -cp . TestResultDetails 
+*/
+

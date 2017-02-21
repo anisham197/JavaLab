@@ -1,4 +1,4 @@
-package StudentPackage;
+package ResultPackage.StudentPackage;
 
 import java.util.*;
 
@@ -28,13 +28,15 @@ public class RegisterStudent implements Student {
 		credits = new ArrayList<>();
 		for ( int i = 0; i < sems; i++ )
 		{
-			System.out.println("Enter credits for sem " + i + 1 );
+			System.out.println("Enter credits for sem " + (i + 1));
 			
 			try 
 			{
 				int sem_cred = sc.nextInt();
 				if ( sem_cred > 30 )
 					throw new CreditLimit("Credits exceed 30");
+				else
+					credits.add(sem_cred);
 			}
 			catch (Exception e)
 			{
