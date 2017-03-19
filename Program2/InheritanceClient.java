@@ -18,12 +18,10 @@ class TwoWheeler extends Vehicle {
 
 	public TwoWheeler(){
 	}
-	
+
 	public TwoWheeler( int yom){
 		super(yom);
 	}
-
-	
 	
 	public void getData(){
 		System.out.println("Two Wheeler");
@@ -39,7 +37,7 @@ class TwoWheeler extends Vehicle {
 }
 
 final class FourWheeler extends Vehicle {
-	
+
 	public void getData(){
 		System.out.println("Four Wheeler");
 		System.out.println("Enter year of Manufacture");
@@ -54,7 +52,7 @@ final class FourWheeler extends Vehicle {
 }
 
 class MyTwoWheeler extends TwoWheeler {
-	
+
 	public MyTwoWheeler (int yom )
 	{
 		super(yom);
@@ -64,7 +62,7 @@ class MyTwoWheeler extends TwoWheeler {
 public class InheritanceClient {
 
 	public static void main ( String args[] ) {
-		
+
 		TwoWheeler tw = new TwoWheeler();
 		tw.getData();
 		tw.putData();
@@ -74,6 +72,6 @@ public class InheritanceClient {
 		System.out.println("My Two Wheeler");
 		MyTwoWheeler mtw = new MyTwoWheeler(2003);
 		mtw.putData();
-		
+
 	}
 }
