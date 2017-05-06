@@ -1,5 +1,6 @@
 import javax.servlet.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -35,12 +36,15 @@ public class ITServlet extends HttpServlet {
 		double incomeTax = (salary*20/100);
 		incomeTax = incomeTax - (incomeTax*deduction/100);
 		response.getWriter().append("Name: "+name).append("\nGender: "+gender).append("\nSalary: "+salary).append("\nDeduction: "+deduction).append("\nIncomeTax: "+incomeTax);
+		String newFile = new File("data.txt").getAbsolutePath();
 		PrintWriter w = new PrintWriter("data.txt");
 		w.println("Name: "+name);
 		w.println("Gender: "+gender);
 		w.println("Salary: "+salary);
 		w.println("Deduction: "+deduction);
 		w.println("IncomeTax: "+incomeTax);
+		System.out.println("File:"+newFile);
+		w.close();
 		
 	}
 
