@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="get" action="reserve.jsp">
+	Name: <input type="text" name="name"><br>
+	Phone: <input type="number" name="phno"><br>
+	Flight No: <input type="number" name="flno"><br>
+	Date: <input type="date" name="date"><br>
+	<input type="submit" name="Reserve"><br>	
+	</form>
+	
+	<form method="get" action="search.jsp">
+	All Flights On: <select name='day'>
+		<option value = "Monday">Monday</option>
+		<option value = "Tuesday">Tuesday</option>
+		<option value = "Wednesday">Wednesday</option>
+		<option value = "Thursday">Thursday</option>
+		<option value = "Friday">Friday</option>
+		<option value = "Saturday">Saturday</option>
+		<option value = "Sunday">Sunday</option>	
+	</select>
+	<input type="submit" value="Search">
+	</form>
+</body>
+</html>
